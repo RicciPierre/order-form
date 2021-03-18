@@ -4,8 +4,6 @@ declare(strict_types=1);
 //we are going to use session variables so we need to enable sessions
 session_start();
 
-
-
 function whatIsHappening()
 {
     echo '<h2>$_GET</h2>';
@@ -18,8 +16,11 @@ function whatIsHappening()
     var_dump($_SESSION);
 }
 
+
 $email = $street = $streetnumber = $city = $zipcode = "";
 $emailErr = $streetErr = $streetNumErr = $cityErr = $zipCodeErr = "";
+$confirme = "";
+$refuse = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["email"])) {
@@ -34,6 +35,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $streetErr = "Name of your street is required";
     } else {
         $street = test_input($_POST["street"]);
+        if (!preg_match("/^[a-zA-Z-' ]*$/", $street)) {
+            $streetErr = "Only letters and white space allowed";
+        }
     }
     
     if (empty($_POST["streetnumber"])) {
@@ -49,6 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $cityErr = "Your city is required";
     } else {
         $city = test_input($_POST["city"]);
+        if (!preg_match("/^[a-zA-Z-' ]*$/", $city)) {
+            $cityErr = "Only letters and white space allowed";
+        }
     }
     
     if (empty($_POST["zipcode"])) {
@@ -59,8 +66,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $zipCodeErr = "Numbers only";
         }
     }
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $refuse = "Your order has not been validated !";
+    } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $street)) {
+        $refuse = "Your order has not been validated !";
+    } elseif (!ctype_digit($streetnumber)) {
+        $refuse = "Your order has not been validated !";
+    } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $city)) {
+        $refuse = "Your order has not been validated !";
+    } elseif (!ctype_digit($zipcode)) {
+        $refuse = "Your order has not been validated !";
+    } else {
+        $confirme = "Your order has been sent !";
+    }
 }
-
 
 
 function Test_input($data)

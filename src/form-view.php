@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>Order pizzas in restaurant "the Personal Pizza Processors"</h1>
+    <h1>Order pizzas in restaurant "Pizza de pepe"</h1>
     <nav>
         <ul class="nav">
             <li class="nav-item">
@@ -21,12 +21,15 @@
             </li>
         </ul>
     </nav>
+    <p><span class="confirme"><?php echo $confirme;?></span></p>
+    <p><span class="refuse"><?php echo $refuse;?></span></p>
     <p><span class="error">* required field</span></p>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="email">E-mail:</label><span class="error"> * <?php echo $emailErr;?></span>
-                <input type="text" id="email" name="email" class="form-control" value="<?php echo $email;?>"/>
+                <label for="email">E-mail:</label>
+                <span class="error"> * <?php echo $emailErr;?></span>
+                <input type="text" id="email" name="email" class="form-control" value="<?php echo $email;?>">
             </div>
             <div></div>
         </div>
@@ -36,22 +39,26 @@
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="street">Street:</label><span class="error"> * <?php echo $streetErr;?></span>
-                    <input type="text" name="street" id="street" class="form-control" value="<?php echo $street;?>">
+                    <label for="street">Street:</label>
+                    <span class="error"> * <?php echo $streetErr;?></span>
+                    <input type="text" name="street" id="street" class="form-control"  value="<?php echo $street;?>">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="streetnumber">Street number:</label><span class="error"> * <?php echo $streetNumErr;?></span>
-                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?php echo $streetnumber;?>">
+                    <label for="streetnumber">Street number:</label>
+                    <span class="error"> * <?php echo $streetNumErr;?></span>
+                    <input type="text" id="streetnumber" name="streetnumber" class="form-control"  value="<?php echo $streetnumber;?>">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="city">City:</label><span class="error"> * <?php echo $cityErr;?></span>
-                    <input type="text" id="city" name="city" class="form-control" value="<?php echo $city;?>">
+                    <label for="city">City:</label>
+                    <span class="error"> * <?php echo $cityErr;?></span>
+                    <input type="text" id="city" name="city" class="form-control"  value="<?php echo $city;?>">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="zipcode">Zipcode</label><span class="error"> * <?php echo $zipCodeErr;?></span>
-                    <input type="text" id="zipcode" name="zipcode" class="form-control" value="<?php echo $zipcode;?>">
+                    <label for="zipcode">Zipcode</label>
+                    <span class="error"> * <?php echo $zipCodeErr;?></span>
+                    <input type="text" id="zipcode" name="zipcode" class="form-control"  value="<?php echo $zipcode;?>">
                 </div>
             </div>
         </fieldset>
@@ -77,6 +84,17 @@
 </div>
 
 <style>
+    .confirme {
+        background-color : #90EE90;
+        color : #008000;
+    }
+    .refuse {
+        background-color : #FF6347;
+        color : #FF4500;
+    }
+    .error {
+        color: red;
+    }
     footer {
         text-align: center;
     }
