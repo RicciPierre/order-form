@@ -4,7 +4,10 @@ declare(strict_types=1);
 //we are going to use session variables so we need to enable sessions
 session_start();
 
-function whatIsHappening() {
+
+
+function whatIsHappening()
+{
     echo '<h2>$_GET</h2>';
     var_dump($_GET);
     echo '<h2>$_POST</h2>';
@@ -15,6 +18,58 @@ function whatIsHappening() {
     var_dump($_SESSION);
 }
 
+$email = $street = $streetnumber = $city = $zipcode = "";
+$emailErr = $streetErr = $streetNumErr = $cityErr = $zipCodeErr = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["email"])) {
+        $emailErr = "Email is required";
+    } else {
+        $email = test_input($_POST["email"]);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "Invalid email format";
+        }
+    }
+    if (empty($_POST["street"])) {
+        $streetErr = "Name of your street is required";
+    } else {
+        $street = test_input($_POST["street"]);
+    }
+    
+    if (empty($_POST["streetnumber"])) {
+        $streetNumErr = "Street number is required";
+    } else {
+        $streetnumber = test_input($_POST["streetnumber"]);
+        if (!ctype_digit($streetnumber)) {
+            $streetNumErr = "Numbers only";
+        }
+    }
+    
+    if (empty($_POST["city"])) {
+        $cityErr = "Your city is required";
+    } else {
+        $city = test_input($_POST["city"]);
+    }
+    
+    if (empty($_POST["zipcode"])) {
+        $zipCodeErr = "Zip code is required";
+    } else {
+        $zipcode = test_input($_POST["zipcode"]);
+        if (!ctype_digit($zipcode)) {
+            $zipCodeErr = "Numbers only";
+        }
+    }
+}
+
+
+
+function Test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
 //your products with their price.
 $products = [
     ['name' => 'Margherita', 'price' => 8],

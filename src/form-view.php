@@ -21,11 +21,12 @@
             </li>
         </ul>
     </nav>
-    <form method="post">
+    <p><span class="error">* required field</span></p>
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="email">E-mail:</label>
-                <input type="text" id="email" name="email" class="form-control"/>
+                <label for="email">E-mail:</label><span class="error"> * <?php echo $emailErr;?></span>
+                <input type="text" id="email" name="email" class="form-control" value="<?php echo $email;?>"/>
             </div>
             <div></div>
         </div>
@@ -35,22 +36,22 @@
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="street">Street:</label>
-                    <input type="text" name="street" id="street" class="form-control">
+                    <label for="street">Street:</label><span class="error"> * <?php echo $streetErr;?></span>
+                    <input type="text" name="street" id="street" class="form-control" value="<?php echo $street;?>">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="streetnumber">Street number:</label>
-                    <input type="text" id="streetnumber" name="streetnumber" class="form-control">
+                    <label for="streetnumber">Street number:</label><span class="error"> * <?php echo $streetNumErr;?></span>
+                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?php echo $streetnumber;?>">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="city">City:</label>
-                    <input type="text" id="city" name="city" class="form-control">
+                    <label for="city">City:</label><span class="error"> * <?php echo $cityErr;?></span>
+                    <input type="text" id="city" name="city" class="form-control" value="<?php echo $city;?>">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="zipcode">Zipcode</label>
-                    <input type="text" id="zipcode" name="zipcode" class="form-control">
+                    <label for="zipcode">Zipcode</label><span class="error"> * <?php echo $zipCodeErr;?></span>
+                    <input type="text" id="zipcode" name="zipcode" class="form-control" value="<?php echo $zipcode;?>">
                 </div>
             </div>
         </fieldset>
