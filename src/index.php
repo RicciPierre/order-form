@@ -67,19 +67,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $refuse = "Your order has not been validated !";
+        $refuse = '<div class="alert alert-danger" role="alert">
+        Your order has not been validated ! </div>';
     } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $street)) {
-        $refuse = "Your order has not been validated !";
+        $refuse = '<div class="alert alert-danger" role="alert">
+        Your order has not been validated ! </div>';
     } elseif (!ctype_digit($streetnumber)) {
-        $refuse = "Your order has not been validated !";
+        $refuse = '<div class="alert alert-danger" role="alert">
+        Your order has not been validated ! </div>';
     } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $city)) {
-        $refuse = "Your order has not been validated !";
+        $refuse = '<div class="alert alert-danger" role="alert">
+        Your order has not been validated ! </div>';
     } elseif (!ctype_digit($zipcode)) {
-        $refuse = "Your order has not been validated !";
+        $refuse = '<div class="alert alert-danger" role="alert">
+        Your order has not been validated ! </div>';
     } else {
         $confirme = '<div class="alert alert-success" role="alert">
-        Your order will be delivered !
-      </div>';
+        Your order will be delivered !</div>';
     }
 }
 
