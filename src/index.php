@@ -16,7 +16,6 @@ function whatIsHappening()
     var_dump($_SESSION);
 }
 
-
 $email = $street = $streetnumber = $city = $zipcode = "";
 $emailErr = $streetErr = $streetNumErr = $cityErr = $zipCodeErr = "";
 $confirme = "";
@@ -81,7 +80,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-
 function Test_input($data)
 {
     $data = trim($data);
@@ -89,8 +87,9 @@ function Test_input($data)
     $data = htmlspecialchars($data);
     return $data;
 }
+
 //your products with their price.
-$products = [
+$pizzas = [
     ['name' => 'Margherita', 'price' => 8],
     ['name' => 'Hawaï', 'price' => 8.5],
     ['name' => 'Salami pepper', 'price' => 10],
@@ -102,7 +101,7 @@ $products = [
     ['name' => 'Scampi', 'price' => 11.5]
 ];
 
-$products = [
+$drinks = [
     ['name' => 'Water', 'price' => 1.8],
     ['name' => 'Sparkling water', 'price' => 1.8],
     ['name' => 'Cola', 'price' => 2],
@@ -112,5 +111,21 @@ $products = [
 ];
 
 $totalValue = 0;
+$products = $pizzas;
+
+if (isset($_GET['food'])) {
+    if ($_GET['food'] == false) {
+        $products = $drinks;
+    }
+}
+if (isset($_POST['products'])) {
+    foreach ($_POST['products'] AS $i => $product) {
+        $totalValue += $products[$i]['price'];
+    }
+}
+if (isset($_POST['express_delivery'])) {
+    $totalValue += $_POST['express_delivery'];
+}
+
 
 require 'form-view.php';

@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>Order pizzas in restaurant "Pizza de pepe"</h1>
+    <h1>La pizza de Pepe...ma SI !</h1>
     <nav>
         <ul class="nav">
             <li class="nav-item">
