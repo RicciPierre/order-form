@@ -20,6 +20,7 @@ $email = $street = $streetnumber = $city = $zipcode = "";
 $emailErr = $streetErr = $streetNumErr = $cityErr = $zipCodeErr = "";
 $confirme = "";
 $refuse = "";
+$normalDelivery =  "1 hour";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["email"])) {
@@ -76,7 +77,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif (!ctype_digit($zipcode)) {
         $refuse = "Your order has not been validated !";
     } else {
-        $confirme = "Your order has been sent !";
+        $confirme = '<div class="alert alert-success" role="alert">
+        Your order will be delivered !
+      </div>';
     }
 }
 

@@ -10,23 +10,25 @@
 </head>
 <body>
 <div class="container">
-    <h1>La pizza de Pepe...ma SI !</h1>
-    <nav>
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link active" href="?food=1">Order pizzas</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="?food=0">Order drinks</a>
-            </li>
-        </ul>
-    </nav>
-    <p><span class="confirme"><?php echo $confirme;?></span></p>
-    <p><span class="refuse"><?php echo $refuse;?></span></p>
-    <p><span class="error">* required field</span></p>
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <div class="salut">
+        <h1>La pizza de Pepe...ma SI &#128076;</h1>
+        <nav>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="?food=1">Order pizzas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="?food=0">Order drinks</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <form  class="test" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <div class="form-row">
             <div class="form-group col-md-6">
+                <p><span class="error">* required field</span></p>
+                <p><span class="confirme"><?php echo $confirme;?></span></p>
+                <p><span class="refuse"><?php echo $refuse;?></span></p>
                 <label for="email">E-mail:</label>
                 <span class="error"> * <?php echo $emailErr;?></span>
                 <input type="text" id="email" name="email" class="form-control" value="<?php echo $email;?>">
@@ -84,13 +86,15 @@
 </div>
 
 <style>
-    .confirme {
-        background-color : #90EE90;
-        color : #008000;
+    .salut {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; 
     }
-    .refuse {
-        background-color : #FF6347;
-        color : #FF4500;
+    .test {
+        margin-left: 15rem;
+        padding: 0;
     }
     .error {
         color: red;
