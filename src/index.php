@@ -94,12 +94,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } elseif (!ctype_digit($zipcode)) {
         $refuse = '<div class="alert alert-danger" role="alert">
         Your order has not been validated ! </div>'; 
+    } elseif (!isset($_POST['products'])) {
+        $refuse = '<div class="alert alert-danger" role="alert">
+        Your order has not been validated no items selected ! </div>';
     } elseif (isset($_POST['express_delivery'])) {
         $confirme = '<div class="alert alert-success" role="alert">
         Your order will be delivered in 30 minutes !</div>';
-    } elseif (!isset($_POST['products'])) {
-        $refuse = '<div class="alert alert-danger" role="alert">
-        Your order has not been validated no items selected! </div>';
     } else {
         $confirme = '<div class="alert alert-success" role="alert">
         Your order will be delivered in 1 hour !</div>';
