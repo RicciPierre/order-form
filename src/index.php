@@ -82,13 +82,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $refuse = '<div class="alert alert-danger" role="alert">
         Your order has not been validated ! </div>';
-    } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $street)) {
+    } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $street) || empty($_POST['street'])) {
         $refuse = '<div class="alert alert-danger" role="alert">
         Your order has not been validated ! </div>';
     } elseif (!ctype_digit($streetnumber)) {
         $refuse = '<div class="alert alert-danger" role="alert">
         Your order has not been validated ! </div>';
-    } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $city)) {
+    } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $city) || empty($_POST['city'])) {
         $refuse = '<div class="alert alert-danger" role="alert">
         Your order has not been validated ! </div>';
     } elseif (!ctype_digit($zipcode)) {
@@ -97,6 +97,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } elseif (isset($_POST['express_delivery'])) {
         $confirme = '<div class="alert alert-success" role="alert">
         Your order will be delivered in 30 minutes !</div>';
+    } elseif (!isset($_POST['products'])) {
+        $refuse = '<div class="alert alert-danger" role="alert">
+        Your order has not been validated no items selected! </div>';
     } else {
         $confirme = '<div class="alert alert-success" role="alert">
         Your order will be delivered in 1 hour !</div>';
@@ -151,6 +154,5 @@ if (isset($_POST['products'])) {
 if (isset($_POST['express_delivery'])) {
     $totalValue += $_POST['express_delivery'];
 }
-
 
 require 'form-view.php';
