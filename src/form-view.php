@@ -6,11 +6,12 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
     <title>Order Pizzas & drinks</title>
 </head>
 <body>
 <div class="container">
-    <div class="salut">
+    <div class="center">
         <h1>La pizza de Pepe...ma SI &#128076;</h1>
         <nav>
             <ul class="nav">
@@ -84,24 +85,5 @@
 
     <footer>You already ordered <strong>&euro; <?php echo $totalValue ?></strong> in pizza(s) and drinks.</footer>
 </div>
-
-<style>
-    .salut {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center; 
-    }
-    .test {
-        margin-left: 15rem;
-        padding: 0;
-    }
-    .error {
-        color: red;
-    }
-    footer {
-        text-align: center;
-    }
-</style>
 </body>
 </html>
