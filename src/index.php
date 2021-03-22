@@ -16,57 +16,58 @@ function whatIsHappening()
     var_dump($_SESSION);
 }
 
-$email = $street = $streetnumber = $city = $zipcode = "";
-$emailErr = $streetErr = $streetNumErr = $cityErr = $zipCodeErr = "";
-$confirme = "";
-$refuse = "";
-$normalDelivery =  "1 hour";
+$email = $street = $streetnumber = $city = $zipcode = '';
+$emailErr = $streetErr = $streetNumErr = $cityErr = $zipCodeErr = '';
+$confirme = $refuse = '';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["email"])) {
-        $emailErr = "Email is required";
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (empty($_POST['email'])) {
+        $emailErr = 'Email is required';
     } else {
-        $email = test_input($_POST["email"]);
+        $email = test_input($_POST['email']);
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $emailErr = "Invalid email format";
+            $emailErr = 'Invalid email format';
         }
     }
-    if (empty($_POST["street"])) {
-        $streetErr = "Name of your street is required";
+    if (empty($_POST['street'])) {
+        $streetErr = 'Name of your street is required';
     } else {
-        $street = test_input($_POST["street"]);
+        $street = test_input($_POST['street']);
         if (!preg_match("/^[a-zA-Z-' ]*$/", $street)) {
-            $streetErr = "Only letters and white space allowed";
+            $streetErr = 'Only letters and white space allowed';
         }
     }
     
-    if (empty($_POST["streetnumber"])) {
-        $streetNumErr = "Street number is required";
+    if (empty($_POST['streetnumber'])) {
+        $streetNumErr = 'Street number is required';
     } else {
-        $streetnumber = test_input($_POST["streetnumber"]);
+        $streetnumber = test_input($_POST['streetnumber']);
         if (!ctype_digit($streetnumber)) {
-            $streetNumErr = "Numbers only";
+            $streetNumErr = 'Numbers only';
         }
     }
     
-    if (empty($_POST["city"])) {
-        $cityErr = "Your city is required";
+    if (empty($_POST['city'])) {
+        $cityErr = 'Your city is required';
     } else {
         $city = test_input($_POST["city"]);
         if (!preg_match("/^[a-zA-Z-' ]*$/", $city)) {
-            $cityErr = "Only letters and white space allowed";
+            $cityErr = 'Only letters and white space allowed';
         }
     }
     
-    if (empty($_POST["zipcode"])) {
-        $zipCodeErr = "Zip code is required";
+    if (empty($_POST['zipcode'])) {
+        $zipCodeErr = 'Zip code is required';
     } else {
-        $zipcode = test_input($_POST["zipcode"]);
+        $zipcode = test_input($_POST['zipcode']);
         if (!ctype_digit($zipcode)) {
-            $zipCodeErr = "Numbers only";
+            $zipCodeErr = 'Numbers only';
         }
     }
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if (isset($_POST['express_delivery'])) {
+        $confirme = '<div class="alert alert-success" role="alert">
+        Your order will be delivered in 30 minutes !</div>';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $refuse = '<div class="alert alert-danger" role="alert">
         Your order has not been validated ! </div>';
     } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $street)) {
@@ -80,10 +81,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         Your order has not been validated ! </div>';
     } elseif (!ctype_digit($zipcode)) {
         $refuse = '<div class="alert alert-danger" role="alert">
-        Your order has not been validated ! </div>';
+        Your order has not been validated ! </div>'; 
     } else {
         $confirme = '<div class="alert alert-success" role="alert">
-        Your order will be delivered !</div>';
+        Your order will be delivered in 1 hour !</div>';
     }
 }
 

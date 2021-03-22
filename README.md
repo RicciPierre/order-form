@@ -27,12 +27,10 @@ This counter should keep going up even when the user closes his browser.
 
 You can start modifying `index.php` and `form-view.php`, they already contain some code to help you on your way.
 
-![order-form](./img/fooddrinks.jpg)
-
 
 ## Required features
 
-### Step 1: Validation 🛂
+### Step 1: Validation 🛂 :heavy_check_mark:
 - Validate that the field e-mail is filled in and a valid e-mail address
 - Make sure that the street, street number, city and zipcode is a required field.
 - Make sure that street number and zipcode are only numbers.
@@ -47,25 +45,19 @@ Save all the address information as long as the user doesn't close the browser. 
 Prefill the address fields with the saved address.
 Should you use a COOKIE 🍪 or a SESSION variable for this?
 
-### Step 3: Switch between drinks and food 🥤 🍕
+### Step 3: Switch between drinks and food 🥤 🍕 :heavy_check_mark:
 There are 2 different $product arrays, one with drinks, the other with food. Depending on which link at the top of the page you click, you should be able to order food or drinks (never both).
 The food items should be the default.
 
-### Step 4: Calculate the delivery time ⏲️
+### Step 4: Calculate the delivery time ⏲️ :heavy_check_mark:
 Calculate the expected delivery time for the product. For normal delivery all orders are fulfilled in 1h, for express delivery it is only 30 minutes.
 Add this expected time to the confirmation message.
 > If you are wondering: they deliver with drones 🛩️.
 
-### Step 5: Total revenue counter 🧮
+### Step 5: Total revenue counter 🧮 :heavy_check_mark:
 Add a counter at the bottom of the page that shows the total amount of money that has been spent on this page from this browser. 
 Should you use a COOKIE or a SESSION variable for this?
 
-### Step 6: Send the e-mail 📧
-Use the `mail()` function in PHP to send an e-mail with a summary of the order.
-The e-mail should contain all information filled in by the user + the total price of all ordered items.
-Display the expected delivery time.
-Make sure to not forget the extra cost for express delivery!
-Sent this e-mail to the user + [a predefined](https://www.php.net/define) e-mail of the restaurant owner.
 
 ## Nice to have features
 - Change the checkboxes to an input field to accept a quantity.
@@ -80,7 +72,3 @@ Change the price calculation and email to support buying multiple items.
 - When you are stuck try to run the function `var_dump()`, it might provide you with information how to access your input data. Or even better: use [xdebug!](https://xdebug.org/)
 - Do not use private browsing during this excersise, it will make it more difficult to get everything working.
 - You do not set cookies the same way you set other variables. Google how to do it!
-
-## Do they have banana pizzas ? 
-
-![pizzparty](./img/pizzaparty.gif)
