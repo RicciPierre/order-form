@@ -30,7 +30,7 @@
                 <p><span class="confirme"><?php echo $confirme;?></span></p>
                 <p><span class="refuse"><?php echo $refuse;?></span></p>
                 <label for="email">E-mail:</label>
-                <span class="error"> * <?php echo $emailErr;?></span>
+                <span class="error"> *  <?php echo $emailErr;?></span>
                 <input type="text" id="email" name="email" class="form-control" value="<?php echo $email;?>">
             </div>
             <div></div>
@@ -42,24 +42,24 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="street">Street:</label>
-                    <span class="error"> * <?php echo $streetErr;?></span>
+                    <span class="error"> *  <?php echo $streetErr;?></span>
                     <input type="text" name="street" id="street" class="form-control"  value="<?php echo $street;?>">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="streetnumber">Street number:</label>
-                    <span class="error"> * <?php echo $streetNumErr;?></span>
+                    <span class="error"> *  <?php echo $streetNumErr;?></span>
                     <input type="text" id="streetnumber" name="streetnumber" class="form-control"  value="<?php echo $streetnumber;?>">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="city">City:</label>
-                    <span class="error"> * <?php echo $cityErr;?></span>
+                    <span class="error"> *  <?php echo $cityErr;?></span>
                     <input type="text" id="city" name="city" class="form-control"  value="<?php echo $city;?>">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="zipcode">Zipcode</label>
-                    <span class="error"> * <?php echo $zipCodeErr;?></span>
+                    <span class="error"> *  <?php echo $zipCodeErr;?></span>
                     <input type="text" id="zipcode" name="zipcode" class="form-control"  value="<?php echo $zipcode;?>">
                 </div>
             </div>
