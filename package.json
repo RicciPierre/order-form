@@ -1,7 +1,4 @@
-{  
-  "scripts": {
-    "start": "node server.js"
-  },
+{
   "buildpacks": [
     {
       "url": "https://github.com/heroku/heroku-buildpack-pgbouncer"
