@@ -151,7 +151,7 @@ if (isset($_POST['products'])) {
     }
 }
 
-if (isset($_POST['express_delivery'])) {
+if (isset($_POST['express_delivery']) ) {
     $totalValue += $_POST['express_delivery'];
 }
 
